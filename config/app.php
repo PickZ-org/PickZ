@@ -195,7 +195,6 @@ return [
 
         App\Providers\ConfigurationServiceProvider::class,
 
-        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class, // Laravel IDE helper
         Barryvdh\DomPDF\ServiceProvider::class, // DOMPDF
         SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class, // Simple QR Code
         Milon\Barcode\BarcodeServiceProvider::class, // Milon/Barcode package

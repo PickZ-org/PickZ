@@ -54,7 +54,8 @@ php artisan migrate --force
 php artisan db:seed --force
 ```
 
-PickZ should now be ready to run!
+PickZ should now be ready to run!\
+The default username/password is admin/admin, make sure to immediately change this after logging in the first time.
 
 ## Built With
 
