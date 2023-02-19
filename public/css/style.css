@@ -1,0 +1,41 @@
+/*
+Toastr
+ */
+#toast-container > div {
+    opacity: 1;
+}
+.toast-title {
+    color:#fff!important;
+}
+
+/*
+Tables
+ */
+.btn-table {
+    margin-right: 7px;
+}
+/*
+Switch in modal fix
+ */
+.custom-control-input {
+    z-index: 1!important;
+    min-width:30px!important;
+}
+/*
+Datatables button fix
+ */
+div.dt-button-collection .dt-button {
+    min-width: 180px!important;
+}
+/*
+datatables selected row link fix
+ */
+table.dataTable>tbody>tr.selected>td>a {
+    color:white;
+}
+/*
+Datepicker on modal fix
+ */
+#ui-datepicker-div {
+    z-index:1100!important;
+}
