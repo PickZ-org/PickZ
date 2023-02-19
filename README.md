@@ -59,7 +59,7 @@ The default username/password is admin/admin, make sure to immediately change th
 
 ## Built With
 
-This project wouldn't exist without the helps of:
+This project wouldn't exist without the help of:
 
 * [Laravel](https://laravel.com/)
 * [AdminLTE](https://adminlte.io/)
