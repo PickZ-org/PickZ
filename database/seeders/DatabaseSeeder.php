@@ -18,9 +18,9 @@ class DatabaseSeeder extends Seeder
         if ( App::environment('local') ) {
             $this->call(ContactTableSeeder::class);
             $this->call(ProductTableSeeder::class);
-            $this->call( LocationTableSeeder::class );
         }
 
+        $this->call( LocationTableSeeder::class );
         $this->call(RoleTableSeeder::class);
         $this->call(UserTableSeeder::class);
         $this->call(OrderStatusSeeder::class);
