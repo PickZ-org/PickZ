@@ -54,6 +54,12 @@ php artisan migrate --force
 php artisan db:seed --force
 ```
 
+Finally, don't forget to add a cron entry to your server for scheduled tasks.
+
+```
+* * * * * cd /path-to-PickZ && php artisan schedule:run >> /dev/null 2>&1
+```
+
 PickZ should now be ready to run!\
 The default username/password is admin/admin, make sure to immediately change this after logging in the first time.
 
