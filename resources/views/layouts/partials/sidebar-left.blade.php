@@ -37,6 +37,13 @@
                                     <p>Outbound</p>
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a href="{{ url('/') }}/orders/archive"
+                                   class="nav-link @if(Request::is('orders/archive')) active @endif">
+                                    <i class="fas fa-archive nav-icon"></i>
+                                    <p>Archive</p>
+                                </a>
+                            </li>
                         </ul>
                     </li>
                 @endif

@@ -36,16 +36,16 @@ class OrderController extends Controller
      * Display a listing of the resource.
      *
      * @param \Illuminate\Http\Request $request
-     * @param string $direction
+     * @param string|null $direction
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index(Request $request, $direction = null)
+    public function index(Request $request, string $direction = null)
     {
-        $orderTypes = ($direction) ? OrderType::where([
+        $orderTypes = ($direction && $direction !== 'archive') ? OrderType::where([
             $direction => 1,
             'visible' => 1
         ])->get() : OrderType::where(['visible' => 1]);
-        $orderStatuses = ($direction) ? OrderStatus::where($direction, 1)->get() : OrderStatus::all();
+        $orderStatuses = ($direction && $direction !== 'archive') ? OrderStatus::where($direction, 1)->get() : OrderStatus::all();
         $coldStock = Stock::with(['product', 'productuom'])->whereDoesntHave('order')->whereHas('location',
             function ($query) {
                 $query->where('id', 1); // inbound dock

@@ -40,7 +40,7 @@ Route::group(['middleware' => ['auth', 'role:admin,manager,owner']], function ()
     Route::get('/', 'DashboardController@index');
 
     // Orders
-    Route::get('orders/{direction}', 'OrderController@index')->where('direction', '(inbound)|(outbound)');
+    Route::get('orders/{direction}', 'OrderController@index')->where('direction', '(inbound)|(outbound)|(archive)');
     Route::post('orders/bulk', 'OrderController@bulkActions');
     Route::resource('orders', 'OrderController')->name('show', 'showOrderRoute');
 

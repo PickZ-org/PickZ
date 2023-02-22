@@ -47,21 +47,25 @@ class DatatablesController extends Controller
     {
 
         $direction = $request->input('direction', '');
-        if ($direction == 'inbound') {
+        if ($direction === 'inbound') {
             $return = Order::with(['type', 'status', 'contact']);
             $return = $return->whereHas('type', function ($query) {
                 $query->where('inbound', 1, 'and');
             });
-        } elseif ($direction == 'outbound') {
+        } elseif ($direction === 'outbound') {
             $return = Order::with(['type', 'status', 'contact']);
             $return = $return->whereHas('type', function ($query) {
                 $query->where('outbound', 1, 'and');
             });
+        } elseif ($direction === 'archive') {
+            $return = Order::with(['type', 'status', 'contact']);
         } else {
             return $this->processRequestResponse(Order::with(['type', 'status', 'contact']), $request);
         }
-        if (!$request->get('query', false)) {
+        if ($direction !== 'archive') {
             $return->where('order_status_id', '<>', '99');
+        } else {
+            $return->where('order_status_id', '=', '99');
         }
         return $this->processRequestResponse($return->withCount('orderlines'), $request);
     }

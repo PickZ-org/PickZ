@@ -12,11 +12,13 @@
                         </h3>
                         <div class="card-tools">
                             <div class="btn-group">
-                                <button type="button" class="btn btn-block bg-gradient-primary" data-toggle="modal"
-                                        data-target="#modal_new_order">
-                                    <i class="fa fa-cart-plus"></i>
-                                    {{__('New Order')}}
-                                </button>
+                                @if($direction !== 'archive')
+                                    <button type="button" class="btn btn-block bg-gradient-primary" data-toggle="modal"
+                                            data-target="#modal_new_order">
+                                        <i class="fa fa-cart-plus"></i>
+                                        {{__('New Order')}}
+                                    </button>
+                                @endif
                                 @if($direction === 'inbound' && $coldstock->count() > 0)
                                     <button type="button"
                                             class="btn bg-gradient-primary dropdown-toggle dropdown-toggle-split"
@@ -414,12 +416,14 @@
                 targets: "_all"
             }],
             columns: [
+                    @if($direction !== 'archive')
                 {
                     data: null,
                     defaultContent: '',
                     className: 'select-checkbox',
                     orderable: false,
                 },
+                    @endif
                 {
                     data: null,
                     defaultContent: '<i class="fas fa-plus-circle"></i>',
@@ -475,6 +479,7 @@
                 style: 'os',
                 selector: 'td:first-child'
             },
+            @if($direction !== 'archive')
             dom: 'Bfrtip',
             buttons: [
                 {
@@ -519,7 +524,8 @@
                             },
                         ],
                 }
-            ]
+            ],
+            @endif
         });
 
         $datatable.on('click', 'td.details-control', function () {
