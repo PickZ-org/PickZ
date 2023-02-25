@@ -175,6 +175,7 @@ class ShippingService
      * Returns the query builder to find invoiceable inbound shipment lines for outbound shipment lines
      * @param ShipmentLine $outboundShipmentLine
      * @return ShipmentLine|Builder
+     * @noinspection StaticInvocationViaThisInspection
      */
     public function getInboundShipmentLinesQuery(ShipmentLine $outboundShipmentLine)
     {
