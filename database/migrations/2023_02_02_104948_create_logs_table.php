@@ -11,13 +11,13 @@ class CreateLogsTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('logs', function (Blueprint $table) {
+        Schema::create('logs', static function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->longText('description');
-            $table->unsignedBigInteger('user_id')->nullable();
-            $table->unsignedBigInteger('order_id')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable()->index();
+            $table->unsignedBigInteger('order_id')->nullable()->index();
             $table->unsignedBigInteger('order_line_id')->nullable();
             $table->unsignedBigInteger('order_status_id')->nullable();
             $table->unsignedBigInteger('task_id')->nullable();
