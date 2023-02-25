@@ -504,8 +504,8 @@ class OrderController extends Controller
              */
             case 'archive':
                 foreach ($orders as $order) {
-                    if (in_array($order->status->id, [80, 82], true)) {
-                        // Order is completed or received (80, 82)
+                    if (in_array($order->status->id, [80, 82, 90], true)) {
+                        // Order is completed, received or cancelled (80, 82, 90)
                         $orderService->setStatus($order, 99); // Archived
                         $messages[] = $order->order_no . ' archived';
                     }

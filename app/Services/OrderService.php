@@ -202,6 +202,8 @@ class OrderService
         // Create log
         $log = [
             'user_id' => Auth::id(),
+            'order_id' => $order->id,
+            'order_status_id' => $status->id,
             'description' => 'Updated order status from ' . $oldStatus->name . ' to ' . $status->name
         ];
         $order->logs()->create($log);
