@@ -54,11 +54,11 @@
             @foreach($tasklines as $line)
                 <tr>
                     <td>{{$loop->iteration}}</td>
-                    <td>{{$line->location->name}}</td>
+                    <td>{{$line->stock->location->name}}</td>
                     <td>{{$line->destination->name}}</td>
-                    <td>{{$line->product->name}}</td>
-                    <td>{{$line->product->sku}}</td>
-                    <td>{{$line->productuom->name}}</td>
+                    <td>{{$line->stock->product->name}}</td>
+                    <td>{{$line->stock->product->sku}}</td>
+                    <td>{{$line->stock->productuom->name}}</td>
                     <td>{{$line->quantity}}</td>
                 </tr>
             @endforeach
