@@ -1,5 +1,5 @@
 {
-    "name": "sjhand/pickz",
+    "name": "pickz-org/pickz",
     "type": "project",
     "description": "An open-source WMS",
     "keywords": [
@@ -13,23 +13,23 @@
     ],
     "license": "AGPL-3.0-or-later",
     "require": {
-        "php": "^8.1",
+        "php": "^8.2",
         "barryvdh/laravel-dompdf": "^2.0",
-        "guzzlehttp/guzzle": "^7.2",
-        "laravel/framework": "^10.0",
+        "guzzlehttp/guzzle": "^7.8",
+        "laravel/framework": "^11.0",
         "spatie/laravel-ignition": "^2.0",
-        "laravel/tinker": "^2.8",
-        "laravel/ui": "^4.0",
-        "milon/barcode": "^10.0",
+        "laravel/tinker": "^2.9",
+        "laravel/ui": "^4.5",
+        "milon/barcode": "^11.0",
         "simplesoftwareio/simple-qrcode": "^4.2"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
         "mbezhanov/faker-provider-collection": "^2.0",
         "barryvdh/laravel-debugbar": "^3.8",
-        "barryvdh/laravel-ide-helper": "^v2.13.0",
-        "phpunit/phpunit": "^10.0",
-        "nunomaduro/collision": "^7.0"
+        "barryvdh/laravel-ide-helper": "^v3.0.0",
+        "phpunit/phpunit": "^11.0",
+        "nunomaduro/collision": "^8.1"
     },
     "config": {
         "optimize-autoloader": true,
