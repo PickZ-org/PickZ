@@ -6,11 +6,11 @@
     <i>PickZ is an open source warehouse management system designed to streamline warehouse operations in small to medium-sized environments.</i>
 </p>
 
-<h4 align="center">
+<p align="center">
   <a href="https://www.pickz.org" target="_blank">Website</a> |
   <a href="https://docs.pickz.org" target="_blank">Documentation</a> |
   <a href="https://demo.pickz.org" target="_blank">Demo</a> |
-</h4>
+</p>
 
 <h4 align="center">
     <img alt="GitHub License" src="https://img.shields.io/github/license/PickZ-org/PickZ" />
@@ -66,12 +66,12 @@ cp .env.example .env
 
 Now change the variables in the .env file for your database, timezone, and app URL.
 
-###### Application settings
+### Application settings
 
 `APP_TIMEZONE` Application timezone \
 `APP_URL` Application URL
 
-###### Database settings
+### Database settings
 
 `DB_CONNECTION` Database type \
 `DB_HOST` IP or hostname \
