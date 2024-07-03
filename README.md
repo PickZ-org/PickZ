@@ -1,32 +1,64 @@
-![PickZ logo](/public/img/logo_small.png)
+<h1 align="center">
+    <img src="./.github/assets/logo_small.png">
+</h1>
 
-PickZ is an open-source warehouse management system built for small to medium-sized operations.
+<p align="center">
+    <i>PickZ is an open source warehouse management system designed to streamline warehouse operations in small to medium-sized environments.</i>
+</p>
 
-## Table of contents
+<h4 align="center">
+  <a href="https://www.pickz.org" target="_blank">Website</a> |
+  <a href="https://docs.pickz.org" target="_blank">Documentation</a> |
+  <a href="https://demo.pickz.org" target="_blank">Demo</a> |
+</h4>
 
-* [Requirements](#requirements)
-* [Installation](#installation)
-* [Built With](#built-with)
-* [License](#license)
-* [Versioning](#versioning)
-* [Coding style](#coding-style)
+<h4 align="center">
+    <img alt="GitHub License" src="https://img.shields.io/github/license/PickZ-org/PickZ" />
+    <img alt="GitHub Release" src="https://img.shields.io/github/v/release/PickZ-org/PickZ" />
+</h4>
 
+<p align="center">
+<img src="./.github/assets/pickz_preview.jpg">
+</p>
+
+## Features
+
+📦 **Smart inventory management:** track inventory in real-time.
+
+📄 **Seamless order handling:** manage inbound and outbound orders.
+
+🧭️ **Guided putaway:** use guided instructions for efficient storage.
+
+📲 **Handheld scanner support:** use handheld scanners for quick, accurate tasks.
+
+📅 **FEFO picking:** pick items using the first expired, first out method.
+
+🧐 **Dynamic stock grouping:** organize stock any way you want.
+
+🔖 **Task and location priorities:** prioritize tasks and locations to optimize operations.
+
+❌ **Crossdocking:** improve efficiency with crossdocking capabilities.
+
+💵 **Invoicing:** invoicing based on quantities and stay duration.
+
+👥 **User & roles management:** manage users and roles.
 
 ## Requirements
 
-* PHP ^8.1
-* Composer ^2.2.0
+* PHP ^8.2
+* Composer ^2.6
 
 ## Installation
 
 Clone or extract files into a folder and run:
 
-```s
+```
 composer install -o --no-dev
 ```
 
-There is a .env.example which is a template of the .env file that the project expects us to have. 
-So we will make a copy of the .env.example file and create a .env file that we can start to fill out to do things like database configuration in the next few steps.
+There is a .env.example which is a template of the .env file that the project expects us to have.
+So we will make a copy of the .env.example file and create a .env file that we can start to fill out to do things like
+database configuration in the next few steps.
 
 ```
 cp .env.example .env
@@ -35,10 +67,12 @@ cp .env.example .env
 Now change the variables in the .env file for your database, timezone, and app URL.
 
 ###### Application settings
+
 `APP_TIMEZONE` Application timezone \
 `APP_URL` Application URL
 
 ###### Database settings
+
 `DB_CONNECTION` Database type \
 `DB_HOST` IP or hostname \
 `DB_PORT` Port \
@@ -63,7 +97,7 @@ Finally, don't forget to add a cron entry to your server for scheduled tasks.
 PickZ should now be ready to run!\
 The default username/password is admin/admin, make sure to immediately change this after logging in the first time.
 
-## Built With
+## Built with
 
 This project wouldn't exist without the help of:
 
@@ -72,18 +106,15 @@ This project wouldn't exist without the help of:
 * [Bootstrap](https://getbootstrap.com/)
 * [DataTables](https://datatables.net/)
 
+## Contributing
+
+Contributions are always welcome!
+
+See [Contributing](CONTRIBUTING.md) for ways to get started.
+
+Please adhere to this project's [Code of conduct](CODE_OF_CONDUCT.md).
+
 ## License
 
-PickZ is distributed under the [AGPLv3](https://www.gnu.org/licenses/agpl-3.0.en.html) license. \
-Copyright (c) 2023 PickZ contributors. All rights reserved
-
-## Versioning
-
-This project adheres to [Semantic versioning](http://semver.org/). 
-
-## Coding style
-
-We use [PSR-12](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-12-extended-coding-style-guide.md) coding standard.
-
-
+PickZ is distributed under the [AGPLv3](https://www.gnu.org/licenses/agpl-3.0.en.html) license.
 
