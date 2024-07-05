@@ -85,10 +85,10 @@ Before submitting a pull request, ensure you have discussed the change via an is
 
 ### Git Commit Messages
 
-- Use the present tense ("Add feature" not "Added feature").
-- Use the imperative mood ("Move item to inventory" not "Moves item to inventory").
-- Limit the first line to 72 characters or less.
+- Limit the first line to 72 characters or fewer.
+- Be clear and descriptive in your commit messages.
 - Reference issues and pull requests liberally.
+
 
 ### Coding Standards
 
