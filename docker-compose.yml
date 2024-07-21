@@ -1,0 +1,54 @@
+services:
+    app:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        image: pickz
+        container_name: PickZ
+        restart: unless-stopped
+        tty: true
+        environment:
+            SERVICE_NAME: app
+            SERVICE_TAGS: dev
+        working_dir: /var/www
+        volumes:
+            - .:/var/www
+            - ./docker/php/local.ini:/usr/local/etc/php/conf.d/local.ini
+        networks:
+            - app-network
+
+    mysql:
+        image: mysql:8.0
+        container_name: mysql
+        restart: unless-stopped
+        tty: true
+        environment:
+            MYSQL_DATABASE: pickz
+            MYSQL_ROOT_PASSWORD: secret
+            MYSQL_PASSWORD: secret
+            MYSQL_USER: pickz
+        volumes:
+            - mysql:/var/lib/mysql
+        networks:
+            - app-network
+
+    nginx:
+        image: nginx:alpine
+        container_name: nginx
+        restart: unless-stopped
+        tty: true
+        ports:
+            - "80:80"
+        volumes:
+            - .:/var/www
+            - ./docker/nginx/conf.d:/etc/nginx/conf.d
+        networks:
+            - app-network
+
+networks:
+    app-network:
+        driver: bridge
+
+volumes:
+    mysql:
+        driver: local
