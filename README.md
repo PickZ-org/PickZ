@@ -48,6 +48,8 @@
 * PHP ^8.2
 * Composer ^2.6
 
+Alternatively, you can use [Docker](https://www.docker.com/) to run the application.
+
 ## Installation
 
 Clone or extract files into a folder and run:
@@ -93,6 +95,51 @@ Finally, don't forget to add a cron entry to your server for scheduled tasks.
 ```
 * * * * * cd /path-to-PickZ && php artisan schedule:run >> /dev/null 2>&1
 ```
+
+PickZ should now be ready to run!\
+The default username/password is admin/admin, make sure to immediately change this after logging in the first time.
+
+## Docker installation
+
+To install and run PickZ using Docker, follow these steps:
+
+1. **Clone the repository:**
+
+    ```sh
+    git clone https://github.com/PickZ-org/PickZ.git
+    cd PickZ
+    ```
+
+2. **Copy the `.env.example` file to `.env` and update the environment variables as needed:**
+
+    ```sh
+    cp .env.example .env
+    ```
+
+3. **Build and start the Docker containers:**
+
+    ```sh
+    docker-compose up --build -d
+    ```
+
+4. **Install PHP dependencies using Composer inside the Docker container:**
+
+    ```sh
+    docker-compose exec app composer install -o --no-dev
+    ```
+
+5. **Generate the application key:**
+
+    ```sh
+    docker-compose exec app php artisan key:generate
+    ```
+
+6. **Run database migrations and seeders:**
+
+    ```sh
+    docker-compose exec app php artisan migrate --force
+    docker-compose exec app php artisan db:seed --force
+    ```
 
 PickZ should now be ready to run!\
 The default username/password is admin/admin, make sure to immediately change this after logging in the first time.
