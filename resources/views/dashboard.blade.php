@@ -4,133 +4,87 @@
 
 @if(Auth::user()->hasRole(['admin', 'manager']))
     @section('content')
+
         <div class="container-fluid">
             <div class="row">
-                <div class="col-4">
-                    <div class="small-box bg-info" style="min-height:calc(100% - 20px);">
-                        <div class="inner">
-                            <h3> {{ $orderCount['totalInbound'] }} </h3>
-                            <p>{{ __('Inbound orders') }}</p>
-                            <div class="d-flex justify-content-between">
-                                @foreach($orderCount['inbound'] as $order)
-                                    <span class="badge text-white p-2"
-                                          style="font-size:16px;background-color:{{ $order->status->color }};">
-                                        {{ $order->count }}
-                                        <br/> {{ \Illuminate\Support\Str::limit($order->status->name, '10', '..')}}
-                                    </span>
-                                @endforeach
-                            </div>
+                <!-- Inbound Orders Widget -->
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-header border-0 bg-info text-white">
+                            <h3 class="card-title">Inbound Orders</h3>
                         </div>
-                        <div class="icon">
-                            <i class="fas fa-download"></i>
+                        <div class="card-body">
+                            <canvas id="inboundChart"></canvas>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-4">
-                    <div class="small-box bg-success" style="min-height:calc(100% - 20px);">
-                        <div class="inner">
-                            <h3> {{ $orderCount['totalOutbound'] }} </h3>
-                            <p>{{ __('Outbound orders') }}</p>
-                            <div class="d-flex justify-content-between">
-                                @foreach($orderCount['outbound'] as $order)
-                                    <span class="badge text-white p-2"
-                                          style="font-size:16px;background-color:{{ $order->status->color }};">
-                                        {{ $order->count }}
-                                        <br/> {{ \Illuminate\Support\Str::limit($order->status->name, '10', '..')}}
-                                    </span>
-                                @endforeach
-                            </div>
+                <!-- Outbound Orders Widget -->
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-header border-0 bg-success text-white">
+                            <h3 class="card-title">Outbound Orders</h3>
                         </div>
-                        <div class="icon">
-                            <i class="fas fa-upload"></i>
+                        <div class="card-body">
+                            <canvas id="outboundChart"></canvas>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-4">
-                    <div class="small-box bg-danger" style="min-height:calc(100% - 20px);">
-                        <div class="inner">
-                            <h3> {{ $taskTotal }} </h3>
-                            <p>{{ __('Tasks') }}</p>
-                            <div class="d-flex justify-content-between">
-                                <span class="badge text-white p-2"
-                                      style="font-size:16px;background-color:{{ $taskColors['putaway'] }};">
-                                        {{ $taskCount['putaway'] }}
-                                        <br/> {{ __('Putaway') }}
-                                    </span>
-                                <span class="badge text-white p-2"
-                                      style="font-size:16px;background-color:{{ $taskColors['replenish'] }};">
-                                        {{ $taskCount['replenish'] }}
-                                        <br/> {{ __('Replenish') }}
-                                    </span>
-                                <span class="badge text-white p-2"
-                                      style="font-size:16px;background-color:{{ $taskColors['pick'] }};">
-                                        {{ $taskCount['pick'] }}
-                                        <br/> {{ __('Picking') }}
-                                    </span>
-                            </div>
+                <!-- Tasks Widget -->
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-header border-0 bg-danger text-white">
+                            <h3 class="card-title">Tasks</h3>
                         </div>
-                        <div class="icon">
-                            <i class="ion ion-md-checkbox-outline"></i>
+                        <div class="card-body">
+                            <canvas id="tasksChart"></canvas>
                         </div>
                     </div>
                 </div>
             </div>
-            @if($upcomingOrders->count())
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="card-header border-transparent">
-                                <h3 class="card-title">{{ __('Upcoming orders') }}</h3>
-                                <div class="card-tools">
-                                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                        <i class="fas fa-minus"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="card-body p-0">
-                                <div class="table-responsive">
-                                    <table class="table m-0">
-                                        <thead>
-                                        <tr>
-                                            <th>{{ __('Order') }}</th>
-                                            <th>{{ __('Type') }}</th>
-                                            <th>{{ __('Status') }}</th>
-                                            <th>{{ __('Delivery date') }}</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        @foreach($upcomingOrders as $order)
-                                            <tr>
-                                                <td>
-                                                    <a href="{{ url('/') }}/orders/{{ $order->id }}">{{ $order->order_no }}</a>
-                                                </td>
-                                                <td>
-                                                    {{ $order->type->name }}
-                                                </td>
-                                                <td>
-                                                <span class="badge"
-                                                      style="background-color:{{ $order->status->color }};color:#ffffff;">{{ $order->status->name }}</span>
-                                                </td>
-                                                <td>
-                                                    {{ $order->req_delivery_date }}
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            @endif
         </div>
     @endsection
 
     @push('scripts')
         <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const ctxInbound = document.getElementById('inboundChart').getContext('2d');
+                new Chart(ctxInbound, {
+                    type: 'doughnut',
+                    data: {
+                        labels: [@forEach($orderCount['inbound'] as $order) '{{ $order->count }} {{ $order->status->name }}', @endforeach],
+                        datasets: [{
+                            data: [@forEach($orderCount['inbound'] as $order) {{ $order->count }}, @endforeach],
+                            backgroundColor: ['#17a2b8', '#28a745']
+                        }]
+                    }
+                });
+
+                const ctxOutbound = document.getElementById('outboundChart').getContext('2d');
+                new Chart(ctxOutbound, {
+                    type: 'doughnut',
+                    data: {
+                        labels: [@forEach($orderCount['outbound'] as $order) '{{ $order->count }} {{ $order->status->name }}', @endforeach],
+                        datasets: [{
+                            data: [@forEach($orderCount['outbound'] as $order) {{ $order->count }}, @endforeach],
+                            backgroundColor: ['#17a2b8', '#ffc107', '#28a745']
+                        }]
+                    }
+                });
+
+                const ctxTasks = document.getElementById('tasksChart').getContext('2d');
+                new Chart(ctxTasks, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['{{ $taskCount['putaway'] }} Putaway', '{{ $taskCount['replenish'] }} Replenish', '{{ $taskCount['pick'] }} Picking'],
+                        datasets: [{
+                            data: [{{ $taskCount['putaway'] }}, {{ $taskCount['replenish'] }}, {{ $taskCount['pick'] }}],
+                            backgroundColor: ['#6c757d', '#007bff', '#ffc107'],
+                        }]
+                    }
+                });
+            });
         </script>
     @endpush
 @endif
