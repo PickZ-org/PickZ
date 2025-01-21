@@ -43,6 +43,58 @@
                     </div>
                 </div>
             </div>
+            @if($upcomingOrders->count())
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header border-transparent">
+                                <h3 class="card-title">{{ __('Upcoming orders') }}</h3>
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-body p-0">
+                                <div class="table-responsive">
+                                    <table class="table m-0">
+                                        <thead>
+                                        <tr>
+                                            <th>{{ __('Order') }}</th>
+                                            <th>{{ __('Type') }}</th>
+                                            <th>{{ __('Status') }}</th>
+                                            <th>{{ __('Contact') }}</th>
+                                            <th>{{ __('Delivery date') }}</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach($upcomingOrders as $order)
+                                            <tr>
+                                                <td>
+                                                    <a href="{{ url('/') }}/orders/{{ $order->id }}">{{ $order->order_no }}</a>
+                                                </td>
+                                                <td>
+                                                    {{ $order->type->name }}
+                                                </td>
+                                                <td>
+                                                <span class="badge"
+                                                      style="background-color:{{ $order->status->color }};color:#ffffff;">{{ $order->status->name }}</span>
+                                                </td>
+                                                <td>
+                                                    {{ $order->contact->name }}
+                                                <td>
+                                                    {{ $order->req_delivery_date }}
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endif
         </div>
     @endsection
 
@@ -56,7 +108,7 @@
                         labels: [@forEach($orderCount['inbound'] as $order) '{{ $order->count }} {{ $order->status->name }}', @endforeach],
                         datasets: [{
                             data: [@forEach($orderCount['inbound'] as $order) {{ $order->count }}, @endforeach],
-                            backgroundColor: ['#17a2b8', '#28a745']
+                            backgroundColor: [@forEach($orderCount['inbound'] as $order) '{{ $order->status->color }}', @endforeach]
                         }]
                     }
                 });
@@ -68,7 +120,7 @@
                         labels: [@forEach($orderCount['outbound'] as $order) '{{ $order->count }} {{ $order->status->name }}', @endforeach],
                         datasets: [{
                             data: [@forEach($orderCount['outbound'] as $order) {{ $order->count }}, @endforeach],
-                            backgroundColor: ['#17a2b8', '#ffc107', '#28a745']
+                            backgroundColor: [@forEach($orderCount['outbound'] as $order) '{{ $order->status->color }}', @endforeach]
                         }]
                     }
                 });
