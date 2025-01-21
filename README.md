@@ -1,9 +1,9 @@
 <h1 align="center">
-    <img src="./.github/assets/logo_small.png">
+    <img src="./.github/assets/logo_small.png" alt="PickZ Logo">
 </h1>
 
 <p align="center">
-    <i>PickZ is an open source warehouse management system designed to streamline warehouse operations in small to medium-sized environments.</i>
+    <i>PickZ is an open-source warehouse management system designed to streamline warehouse operations in small to medium-sized environments.</i>
 </p>
 
 <p align="center">
@@ -18,30 +18,30 @@
 </h4>
 
 <p align="center">
-<img src="./.github/assets/pickz_preview.jpg">
+<img src="./.github/assets/pickz_preview.jpg" alt="PickZ Preview">
 </p>
 
 ## Features
 
-📦 **Smart inventory management:** track inventory in real-time.
+📦 **Smart inventory management:** Track inventory in real-time.
 
-📄 **Seamless order handling:** manage inbound and outbound orders.
+📄 **Seamless order handling:** Manage inbound and outbound orders efficiently.
 
-🧭️ **Guided putaway:** use guided instructions for efficient storage.
+🧭️ **Guided putaway:** Follow guided instructions for optimal storage.
 
-📲 **Handheld scanner support:** use handheld scanners for quick, accurate tasks.
+📲 **Handheld scanner support:** Utilize handheld scanners for quick, accurate tasks.
 
-📅 **FEFO picking:** pick items using the first expired, first out method.
+📅 **FEFO picking:** Implement First Expired, First Out (FEFO) picking method.
 
-🧐 **Dynamic stock grouping:** organize stock any way you want.
+🧐 **Dynamic stock grouping:** Organize stock flexibly based on your needs.
 
-🔖 **Task and location priorities:** prioritize tasks and locations to optimize operations.
+🔖 **Task and location priorities:** Optimize operations with task and location prioritization.
 
-❌ **Crossdocking:** improve efficiency with crossdocking capabilities.
+❌ **Cross-docking:** Improve efficiency with cross-docking capabilities.
 
-💵 **Invoicing:** invoicing based on quantities and stay duration.
+💵 **Invoicing:** Generate invoices based on quantities and storage duration.
 
-👥 **User & roles management:** manage users and roles.
+👥 **User & role management:** Control user access and permissions.
 
 ## Requirements
 
@@ -52,54 +52,57 @@ Alternatively, you can use [Docker](https://www.docker.com/) to run the applicat
 
 ## Installation
 
-Clone or extract files into a folder and run:
+Clone or extract the files into a folder and run:
 
-```
+```sh
 composer install -o --no-dev
 ```
 
-There is a .env.example which is a template of the .env file that the project expects us to have.
-So we will make a copy of the .env.example file and create a .env file that we can start to fill out to do things like
-database configuration in the next few steps.
+Copy the `.env.example` file to `.env` and configure your environment settings:
 
-```
+```sh
 cp .env.example .env
 ```
 
-Now change the variables in the .env file for your database, timezone, and app URL.
+Update the `.env` file with your database settings, timezone, and application URL.
 
 ### Application settings
 
-`APP_TIMEZONE` Application timezone \
-`APP_URL` Application URL
+- `APP_TIMEZONE`: Application timezone
+- `APP_URL`: Application URL
 
 ### Database settings
 
-`DB_CONNECTION` Database type \
-`DB_HOST` IP or hostname \
-`DB_PORT` Port \
-`DB_DATABASE` Database name \
-`DB_USERNAME` Username \
-`DB_PASSWORD` Password
+- `DB_CONNECTION`: Database type
+- `DB_HOST`: IP or hostname
+- `DB_PORT`: Port
+- `DB_DATABASE`: Database name
+- `DB_USERNAME`: Username
+- `DB_PASSWORD`: Password
 
-Run these commands to generate an app encryption key and set up the initial database tables and records.
+Run the following commands to generate an encryption key and set up the database:
 
-```
+```sh
 php artisan key:generate
 php artisan migrate --force
 php artisan db:seed --force
 ```
 
-Finally, don't forget to add a cron entry to your server for scheduled tasks.
+Finally, add a cron job for scheduled tasks:
 
-```
+```sh
 * * * * * cd /path-to-PickZ && php artisan schedule:run >> /dev/null 2>&1
 ```
 
-PickZ should now be ready to run!\
-The default username/password is admin/admin, make sure to immediately change this after logging in the first time.
+PickZ should now be ready to use!
 
-## Docker installation
+**Default Credentials:**
+- Username: `admin`
+- Password: `admin`
+
+Make sure to change the default password after logging in.
+
+## Docker Installation
 
 To install and run PickZ using Docker, follow these steps:
 
@@ -141,12 +144,17 @@ To install and run PickZ using Docker, follow these steps:
     docker-compose exec app php artisan db:seed --force
     ```
 
-PickZ should now be ready to run!\
-The default username/password is admin/admin, make sure to immediately change this after logging in the first time.
+PickZ should now be ready to use!
 
-## Built with
+**Default Credentials:**
+- Username: `admin`
+- Password: `admin`
 
-This project wouldn't exist without the help of:
+Make sure to change the default password after logging in.
+
+## Built With
+
+This project wouldn't be possible without:
 
 * [Laravel](https://laravel.com/)
 * [AdminLTE](https://adminlte.io/)
@@ -157,9 +165,9 @@ This project wouldn't exist without the help of:
 
 Contributions are always welcome!
 
-See [Contributing](CONTRIBUTING.md) for ways to get started.
+See [Contributing](CONTRIBUTING.md) for guidelines on how to contribute.
 
-Please adhere to this project's [Code of conduct](CODE_OF_CONDUCT.md).
+Please adhere to this project's [Code of Conduct](CODE_OF_CONDUCT.md).
 
 ## License
 
