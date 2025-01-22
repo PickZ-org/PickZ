@@ -153,7 +153,7 @@
                             <a href="{{ url('/') }}/locations"
                                class="nav-link @if(Request::is('locations')) active @endif">
                                 <i class="nav-icon fas fa-sitemap"></i>
-                                <p>Location management</p>
+                                <p>Locations</p>
                             </a>
                         </li>
                     @endif
