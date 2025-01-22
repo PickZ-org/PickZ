@@ -8,8 +8,7 @@
 
 <p align="center">
   <a href="https://www.pickz.org" target="_blank">Website</a> |
-  <a href="https://docs.pickz.org" target="_blank">Documentation</a> |
-  <a href="https://demo.pickz.org" target="_blank">Demo</a> |
+  <a href="https://docs.pickz.org" target="_blank">Documentation</a>
 </p>
 
 <h4 align="center">
@@ -18,7 +17,7 @@
 </h4>
 
 <p align="center">
-<img src="./.github/assets/pickz_preview.jpg" alt="PickZ Preview">
+<img src="./.github/assets/pickz_dashboard.png" alt="PickZ Preview">
 </p>
 
 ## Features
