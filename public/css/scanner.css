@@ -1,0 +1,31 @@
+/*.container-fluid {
+    padding-left:0px;
+    padding-right:0px;
+}*/
+
+.card-body {
+    padding:5px;
+}
+.btn {
+    padding-top: 11px;
+    padding-bottom: 11px;
+    min-width: 75px;
+}
+p {
+    margin-bottom:5px;
+}
+.card-body.justify-content-between::after {
+    content:none!important;
+}
+/*
+    Dashboard
+ */
+.dashboard-scanner .btn .badge {
+    float: right;
+    position: relative;
+    top: 5px;
+    right:10%
+}
+.dashboard-scanner .btn {
+    text-align: left;
+}
