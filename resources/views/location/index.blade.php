@@ -241,7 +241,7 @@
                     render: function (data, type, row, meta) {
                         return '' +
                             '<a href="#" data-target="' + row.id + '" class="editLocation btn btn-xs btn-default btn-table" title="Delete"><i class="far fa-edit"></i></a>' +
-                            '<a href="#" data-target="' + row.id + '" class="locationLabel btn btn-xs btn-default btn-table" title="Generate new QR code"><i class="fas fa-barcode"></i></a>' +
+                            '<a href="#" data-target="' + row.id + '" class="locationLabel btn btn-xs btn-default btn-table" title="Generate location label"><i class="fas fa-barcode"></i></a>' +
                             '<a href="#" data-target="' + row.id + '" class="deleteLocation btn btn-xs btn-danger btn-table" title="Delete"><i class="far fa-trash-alt"></i></a>' +
                             '';
                     },
