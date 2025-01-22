@@ -1,10 +1,9 @@
 @extends('layouts.default')
 
-@section('title', 'Welcome, ' . Auth::user()->name )
+@section('title', 'Good ' . (now()->hour < 12 ? ' morning' : (now()->hour < 18 ? 'afternoon' : 'evening')) . ', ' . Auth::user()->name )
 
 @if(Auth::user()->hasRole(['admin', 'manager']))
     @section('content')
-
         <div class="container-fluid">
             <div class="row">
                 <!-- Inbound Orders Widget -->
