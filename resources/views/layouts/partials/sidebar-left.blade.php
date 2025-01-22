@@ -1,7 +1,9 @@
 <!-- BEGIN: Left Aside -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
+
     <a href="{{ url('/') }}" class="brand-link">
-        <img src="{{ url('/') }}/img/logo_small.png" alt="PickZ logo" class="brand-image float-none">
+        <img src="{{ url('/') }}/img/logo_small.png" alt="PickZ logo" class="brand-image float-none sidebar-logo">
+        <img src="{{ url('/') }}/img/favicon.png" alt="PickZ logo" class="brand-image float-none favicon-logo">
     </a>
     <div class="sidebar">
         <nav class="mt-3">

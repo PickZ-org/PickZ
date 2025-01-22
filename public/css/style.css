@@ -1,3 +1,15 @@
+/* sidebar logo */
+.favicon-logo {
+    display: none;
+}
+body.sidebar-collapse .sidebar-logo {
+    display: none;
+}
+body.sidebar-collapse .favicon-logo {
+    display: block;
+}
+
+
 /*
 Toastr
  */
