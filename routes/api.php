@@ -14,5 +14,13 @@ use Illuminate\Http\Request;
 */
 
 Route::middleware('auth:api')->group(function () {
-    Route::resource('/stock', 'Api\StockController');
+    Route::resource('/stock', 'Api\StockController')->names([
+        'index' => 'api.stock.index',
+        'create' => 'api.stock.create',
+        'store' => 'api.stock.store',
+        'show' => 'api.stock.show',
+        'edit' => 'api.stock.edit',
+        'update' => 'api.stock.update',
+        'destroy' => 'api.stock.destroy',
+    ]);
 });
